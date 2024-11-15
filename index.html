@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>deatils demo</title>
+    <meta name="description" content=""/>
+    <style>
+        html {
+            font-family: sans-serif;
+            background-color: rgba(22, 24, 28);
+            color: white;
+        }
+
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+        }
+
+
+        main {
+            display: flex;
+            gap: 2rem;
+        }
+
+
+        details {
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            border-radius: 2rem;
+            position: relative;
+            height: 30rem;
+            z-index: 1;
+
+
+            &:hover {
+                outline: 3px #6d9afa solid;
+                outline-offset: 3px;
+                cursor: pointer;
+            }
+
+
+            summary {
+                width: 5rem;
+            }
+
+
+            img {
+                filter: saturate(0.3);
+            }
+        }
+
+
+        details:not([open]):hover {
+            img {
+                transform: scale(1.05);
+                filter: brightness(0.85);
+            }
+        }
+
+
+        details .content {
+            display: flex;
+            padding-right: 5rem;
+            height: 100%;
+            align-items: end;
+            color: white;
+
+
+            p {
+                font-size: 0.825rem;
+                line-height: 18px;
+            }
+        }
+
+
+        details::marker {
+            content: "";
+        }
+
+
+        details::details-content {
+            transition: width 0.5s ease,
+            opacity 0.5s 0.5s ease;
+            content-visibility 0.5s ease allow-discrete;
+            width: 0;
+            opacity: 0;
+        }
+
+
+        details[open]::details-content {
+            width: 300px;
+            opacity: 1;
+        }
+
+
+        summary img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            transition: all 0.2s ease-in;
+        }
+
+
+        details[open] img {
+            filter: brightness(0.65);
+        }
+    </style>
+</head>
+
+
+<body>
+<h1>
+    <code> &lt;details&gt; </code>
+    Demo
+</h1>
+
+
+<main>
+    <details name="image">
+        <summary>
+            <img
+                    src="./assets/bamboo.jpg"
+                    height="400"
+                    width="300"
+                    alt="Bamboo"
+            />
+        </summary>
+
+
+        <div class="content">
+            <p>
+                Bamboo trees in Kyoto, Japan.
+            </p>
+        </div>
+    </details>
+
+
+    <details name="image">
+        <summary>
+            <img
+                    src="./assets/plant.jpg"
+                    height="400"
+                    width="300"
+                    alt="Plant"
+            />
+        </summary>
+
+
+        <div class="content">
+            <p>A blooming plant in Thailand.</p>
+        </div>
+    </details>
+
+
+    <details name="image">
+        <summary>
+            <img
+                    src="./assets/beach.jpg"
+                    height="400"
+                    width="300"
+                    alt="Beach"
+            />
+        </summary>
+
+
+        <div class="content">
+            <p>A beach with palm trees in Brazil.</p>
+        </div>
+    </details>
+</main>
+
+</body>
+</html>
+
